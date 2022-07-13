@@ -13,8 +13,6 @@ const Login = () => {
     const [zipcode, setZipcode] = useState('');
     const cookies = new Cookies();
 
-
-
     const BaseUrl = 'https://jsonplaceholder.typicode.com/users';
 
     function getUsername(e) { // obtiene el valor del texfield nombre o email
@@ -30,8 +28,8 @@ const Login = () => {
             .then(response => {
                 setUsers(response.data);
                 for (let i = 0; i < users.length; i++) {
-                    if (users[i].username == username || users[i].email == username) {
-                        if (users[i].address.zipcode == zipcode) {
+                    if (users[i].username === username || users[i].email === username) {
+                        if (users[i].address.zipcode === zipcode) {
                             let user = users[i];
                             cookies.set('id', user.id, {path: "/"});
                             cookies.set('username', user.username, {path: "/"});

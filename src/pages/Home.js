@@ -1,27 +1,50 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../css/Home.css';
 import Cookies from 'universal-cookie';
-
+import NavBar from '../components/NavBar';
+import AlbumLoader from '../components/AlbumLoader';
+import { useState } from 'react';
+import axios from 'axios';
 
 const cookies = new Cookies();
-
-
 const Home = () => {
-  const navigate = useNavigate();
-  const id = cookies.get('id');
+  const [album, setAlbum] = useState(''); 
+  const [albums, setAlbums] = useState('');
+  const userId = cookies.get('id');
   const username = cookies.get('username');
+  const albumsUrl = 'https://jsonplaceholder.typicode.com/albums?userId=' + userId;
+  const photosUrl = 'https://jsonplaceholder.typicode.com/photos?albumId=';
 
-  const logout = () => {
-    cookies.remove('id', { path: "/" });
-    cookies.remove('username', { path: "/" });
-    navigate('/');
-  };
+  const findAlbums = async () => {
+    await axios.get(albumsUrl)
+      .then(res => {
+        setAlbums(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
+  }
+
+  const findAlbum = async (id) => {
+    await axios.get(photosUrl+id)
+      .then(res => {
+        setAlbum(res.data);
+        console.log(album);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
 
   return (
     <div className='Home'>
-      <h2>Hello {username} id: {id}</h2>
-      <input type="button" value={'Goodbye MF'} onClick={()=>logout()} />
+      <NavBar name={username} />
+      <h2>Albums de {username}</h2>
+      <br />
+      <input type="button" value={'Albums'} onClick={() => { findAlbums() }} />
+      <AlbumLoader albums={albums} findAlbum={findAlbum()}/>
     </div>
   )
 }
