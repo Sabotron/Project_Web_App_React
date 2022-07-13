@@ -1,0 +1,23 @@
+body{
+    background-color: darkslateblue;
+}
+
+.Login
+{   
+    background-color: lightblue;
+    width: 30%;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;    
+    margin: auto;
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: mediumblue;
+    border-radius:5px;
+}
+
+h2 {
+    background-color: mediumaquamarine;
+    text-align: center;
+}

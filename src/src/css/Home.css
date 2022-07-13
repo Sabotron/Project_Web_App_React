@@ -1,0 +1,22 @@
+.Home
+{   
+    background-color: lightblue;
+    width: 60%;
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;    
+    margin: auto;
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: mediumblue;
+    border-radius:5px;
+}
+
+h2 {
+    background-color: mediumaquamarine;
+}
+
+body{
+    background-color: darkslateblue;
+}
