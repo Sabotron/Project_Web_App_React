@@ -1,48 +1,79 @@
 .Home
 {   
+    display: flex;
+    flex-direction: column;
     background-color: lightblue;
     width: 60%;
     min-width: 500px;
-    display: flex;
-    flex-direction: column;    
     margin: auto;
     padding: 5px;
     border-style: solid;
     border-width: 1px;
     border-color: mediumblue;
-    border-radius:5px;
+    border-radius:20px;
+    
 }
 
-h2 {
-    background-color: mediumaquamarine;
-}
 
 h3{
-    width: 80%;
-    margin: auto;
+    
+    display: flex;
+    width: 100%;
     margin-top: 5px;
-    color:darkolivegreen;
-    border-style: solid;
-    border-width: 1px;
-    border-color: mediumaquamarine;
-    padding: 10px;
+    color:navy;
+    padding: 5px;
     text-align: center;
-    background-color: lightgrey;
+    margin: 5px;
 }
+
 
 
 body{
     background-color: darkslateblue;
 }
 
-.blue-btn
-{   font-weight: bold;
-    color:whitesmoke;
-    background-color:navy;
+
+.user-album{
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+}
+
+.searchBar{
+    width: 50%;
+    height: auto;
+    font-size: 20px;
     margin: auto;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     text-align: center;
+    border-radius:10px;
+    
+}
+
+.albums{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.album-info{
+    background-color: aliceblue;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: darkblue;
+
+}
+.container{
     display: flex;
     justify-content: center;
-    width: 105px;
+    width: 100%;
+    height: auto;
 }

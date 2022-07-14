@@ -1,22 +1,18 @@
-import React from 'react'
-import '../css/Album.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Cookies from 'universal-cookie';
 import NavBar from '../components/NavBar';
 import PhotoLoader from '../components/PhotoLoader';
-import { useState } from 'react';
-import axios from 'axios';
-
-
+import '../css/Album.css';
 
 const cookies = new Cookies();
 const Album = () => {
-  const [photo, setPhoto] = useState(''); 
-  const [photos, setPhotos] = useState('');
+ const [photos, setPhotos] = useState('');
   const userId = cookies.get('id');
   const username = cookies.get('username');
   const albumId = cookies.get('albumId');
-  const photosUrl = 'https://jsonplaceholder.typicode.com/photos?albumId='+albumId;
-  const photoUrl = 'https://jsonplaceholder.typicode.com/photos?photoId=';
+  const albumTitle = cookies.get('albumTitle');
+  const photosUrl = 'https://jsonplaceholder.typicode.com/photos?albumId=' + albumId;
 
   const findPhotos = async () => {
     await axios.get(photosUrl)
@@ -26,33 +22,21 @@ const Album = () => {
       .catch(err => {
         console.log(err);
       })
-
   }
-/*
-  const findPhoto = async (id) => {
-    await axios.get(photoUrl+id)
-      .then(res => {
-        setPhoto(res.data);
-        console.log(photo);
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }*/
 
+  useEffect(() => {
+    findPhotos();
+  }, [])
 
   return (
     <div className='Album'>
       <NavBar name={username} id={userId} />
-      <h2>Fotos de {username} | Album Id: {albumId}</h2>
+      <h2>Album: {albumTitle}</h2>
+      <input type="text" className='searchBar' placeholder="Buscar Album"/>
       <br />
-      <input type="button" value={'Ver Fotos'} className='blue-btn' onClick={() => { findPhotos() }} />
-      <PhotoLoader photos={photos}/>
+      <PhotoLoader photos={photos} />
     </div>
   )
-
-
 }
 
-//       <PhotoLoader photos={photos} findPhoto={findPhoto}/>
 export default Album

@@ -1,5 +1,6 @@
 .p-username
 {
+    font-size: 20px;
     padding: 0 20px;
     display: flex;
     font-weight: bold;
@@ -10,18 +11,15 @@
 ul{
     display: flex;
     justify-content: space-around;
+}
 
+a{
+    text-decoration: none;
+    font-size: 20px;
 }
 
 .li-item{
-    padding: 0 20px 0 0px;
+    padding: 0 10px 0 0px;
     display: flex;    
-    text-decoration: none;
-    text-decoration-line: none;
-    justify-content: space-between;
-
-    font-style: none;
-    list-style: none;
- 
-    
+    font-weight: bold;
 }

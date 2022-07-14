@@ -1,10 +1,8 @@
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../css/Login.css'
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-
+import '../css/Login.css'
 
 const Login = () => {
     const navigate = useNavigate();
@@ -48,10 +46,11 @@ const Login = () => {
 
         <div className='Login'>
             <h2>Login</h2>
-            <input type="text" placeholder='Name or Email' onChange={getUsername} />
-            <input type="text" placeholder='Password' onChange={getZipcode} />
-            <hr />
-            <input type="button" className='green-btn' value={'Ingresar'} onClick={() => { checkUser() }} />
+            <input type="text" className='texfield' placeholder='Name or Email' onChange={getUsername} />
+     
+            <input type="text" className='texfield'  placeholder='Password' onChange={getZipcode} />
+      
+            <input type="button" className='btn' value={'Ingresar'} onClick={() => { checkUser() }} />
         </div>
 
     )

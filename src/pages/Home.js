@@ -1,19 +1,16 @@
-import React from 'react';
-import '../css/Home.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Cookies from 'universal-cookie';
 import NavBar from '../components/NavBar';
 import AlbumLoader from '../components/AlbumLoader';
-import { useState } from 'react';
-import axios from 'axios';
+import '../css/Home.css';
 
 const cookies = new Cookies();
 const Home = () => {
- // const [album, setAlbum] = useState(''); 
   const [albums, setAlbums] = useState('');
   const userId = cookies.get('id');
   const username = cookies.get('username');
   const albumsUrl = 'https://jsonplaceholder.typicode.com/albums?userId=' + userId;
- // const photosUrl = 'https://jsonplaceholder.typicode.com/photos?albumId=';
 
   const findAlbums = async () => {
     await axios.get(albumsUrl)
@@ -23,30 +20,21 @@ const Home = () => {
       .catch(err => {
         console.log(err);
       })
-
   }
-/*
-  const findAlbum = async (id) => {
-    await axios.get(photosUrl+id)
-      .then(res => {
-        setAlbum(res.data);
-        console.log(album);
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }
-*/
 
+  useEffect(()=>{
+    findAlbums();
+  },[])
+  
   return (
     <div className='Home'>
       <NavBar name={username} id={userId} />
       <h2>Albums de {username}</h2>
+      <input type="text" className='searchBar' placeholder="Buscar Album"/>
       <br />
-      <input type="button" value={'Ver Albums'} className='blue-btn' onClick={() => { findAlbums() }} />
       <AlbumLoader albums={albums}/>
     </div>
   )
 }
-//      <AlbumLoader albums={albums} findAlbum={findAlbum}/>
+
 export default Home
