@@ -1,6 +1,8 @@
+import '../css/NavBar.css';
 import React from 'react'
 import { Outlet, Link } from 'react-router-dom'
 import Cookies from 'universal-cookie'
+
 const cookies = new Cookies();
 const NavBar = (props) => {
 
@@ -13,8 +15,12 @@ const NavBar = (props) => {
     return (
         <>
             <nav className='navbar'>
+                <div>
+
+                </div>
                 <ul>
-                    <p className='p-username'> Bienvenid@ {props.name}! Id:({props.id})</p>
+                <li className='p-username'> Bienvenid@ {props.name}! Id:({props.id})</li>
+                <li className='li-item'> <Link to="/home" > Home </Link></li>
                     <li className='li-item'> <Link to="/album" > Album </Link></li>
                     <li className='li-item' onClick={()=>eraseCookies()}> <Link to="/" > Logout </Link></li>
                 </ul>

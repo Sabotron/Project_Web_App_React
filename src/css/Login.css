@@ -21,3 +21,14 @@ h2 {
     background-color: mediumaquamarine;
     text-align: center;
 }
+
+.green-btn
+{   font-weight: bold;
+    color:blue;
+    background-color: rgb(0, 255, 17);
+    margin: auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    width: 75px;
+}

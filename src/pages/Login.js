@@ -50,8 +50,8 @@ const Login = () => {
             <h2>Login</h2>
             <input type="text" placeholder='Name or Email' onChange={getUsername} />
             <input type="text" placeholder='Password' onChange={getZipcode} />
-            <br />
-            <input type="button" value={'Accept'} onClick={() => { checkUser() }} />
+            <hr />
+            <input type="button" className='green-btn' value={'Ingresar'} onClick={() => { checkUser() }} />
         </div>
 
     )

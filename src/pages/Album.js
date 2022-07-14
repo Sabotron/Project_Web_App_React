@@ -1,9 +1,8 @@
 import React from 'react'
-import '../css/Home.css';
+import '../css/Album.css';
 import Cookies from 'universal-cookie';
 import NavBar from '../components/NavBar';
 import PhotoLoader from '../components/PhotoLoader';
-//import AlbumLoader from '../components/AlbumLoader';
 import { useState } from 'react';
 import axios from 'axios';
 
@@ -47,7 +46,7 @@ const Album = () => {
       <NavBar name={username} id={userId} />
       <h2>Fotos de {username} | Album Id: {albumId}</h2>
       <br />
-      <input type="button" value={'Ver Fotos'} onClick={() => { findPhotos() }} />
+      <input type="button" value={'Ver Fotos'} className='blue-btn' onClick={() => { findPhotos() }} />
       <PhotoLoader photos={photos}/>
     </div>
   )

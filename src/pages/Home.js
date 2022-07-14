@@ -43,7 +43,7 @@ const Home = () => {
       <NavBar name={username} id={userId} />
       <h2>Albums de {username}</h2>
       <br />
-      <input type="button" value={'Albums'} onClick={() => { findAlbums() }} />
+      <input type="button" value={'Ver Albums'} className='blue-btn' onClick={() => { findAlbums() }} />
       <AlbumLoader albums={albums}/>
     </div>
   )

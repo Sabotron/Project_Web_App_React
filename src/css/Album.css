@@ -1,4 +1,4 @@
-.Home
+.Album
 {   
     background-color: lightblue;
     width: 60%;
@@ -17,19 +17,6 @@ h2 {
     background-color: mediumaquamarine;
 }
 
-h3{
-    width: 80%;
-    margin: auto;
-    margin-top: 5px;
-    color:darkolivegreen;
-    border-style: solid;
-    border-width: 1px;
-    border-color: mediumaquamarine;
-    padding: 10px;
-    text-align: center;
-    background-color: lightgrey;
-}
-
 
 body{
     background-color: darkslateblue;
@@ -45,4 +32,23 @@ body{
     display: flex;
     justify-content: center;
     width: 105px;
+}
+
+.mini-img{
+    width: 150px;
+    justify-content: center;
+    margin: auto;
+
+}
+
+.album-photo{
+    
+    border-style: solid;
+    border-radius: 15px;
+    border-color: rgb(88, 96, 96);
+    border-width: 1px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
