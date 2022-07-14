@@ -6,11 +6,11 @@ import PhotoLoader from '../components/PhotoLoader';
 import PhotoModal from '../components/PhotoModal';
 import '../css/Album.css';
 
-
 const Album = () => {
   const cookies = new Cookies();
   const [photos, setPhotos] = useState('');
   const [photoUrl, setPhotoUrl] = useState('');
+  const [openModal, setOpenModal] = useState(false);
   const userId = cookies.get('id');
   const username = cookies.get('username');
   const albumId = cookies.get('albumId');
@@ -27,10 +27,18 @@ const Album = () => {
       })
   }
 
+  function openPhotoModal(photoUrl){
+    setPhotoUrl(photoUrl);
+    setOpenModal(true);
+    console.log('it should open');
+    console.log(photoUrl);
+  }
+
   function searchPhoto(e) {
     for (let i = 0; i < photos.length; i++) {
       if (photos[i].title === e.target.value) {
         setPhotoUrl(photos[i].url);
+        setOpenModal(true);
         console.log(photoUrl);
         break;
       }
@@ -48,7 +56,8 @@ const Album = () => {
       <h2>Album: {albumTitle}</h2>
       <input type="text" className='searchBar' placeholder="Buscar Foto" onChange={searchPhoto} onPaste={searchPhoto} />
       <hr />
-      <PhotoLoader photos={photos} />
+      {openModal && <PhotoModal photoUrl={photoUrl}/>}
+      <PhotoLoader photos={photos} openPhotoModal={openPhotoModal} />
     </div>
   )
 }
