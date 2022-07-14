@@ -8,12 +8,12 @@ import axios from 'axios';
 
 const cookies = new Cookies();
 const Home = () => {
-  const [album, setAlbum] = useState(''); 
+ // const [album, setAlbum] = useState(''); 
   const [albums, setAlbums] = useState('');
   const userId = cookies.get('id');
   const username = cookies.get('username');
   const albumsUrl = 'https://jsonplaceholder.typicode.com/albums?userId=' + userId;
-  const photosUrl = 'https://jsonplaceholder.typicode.com/photos?albumId=';
+ // const photosUrl = 'https://jsonplaceholder.typicode.com/photos?albumId=';
 
   const findAlbums = async () => {
     await axios.get(albumsUrl)
@@ -25,7 +25,7 @@ const Home = () => {
       })
 
   }
-
+/*
   const findAlbum = async (id) => {
     await axios.get(photosUrl+id)
       .then(res => {
@@ -36,17 +36,17 @@ const Home = () => {
         console.log(err);
       })
   }
-
+*/
 
   return (
     <div className='Home'>
-      <NavBar name={username} />
+      <NavBar name={username} id={userId} />
       <h2>Albums de {username}</h2>
       <br />
       <input type="button" value={'Albums'} onClick={() => { findAlbums() }} />
-      <AlbumLoader albums={albums} findAlbum={findAlbum()}/>
+      <AlbumLoader albums={albums}/>
     </div>
   )
 }
-
+//      <AlbumLoader albums={albums} findAlbum={findAlbum}/>
 export default Home

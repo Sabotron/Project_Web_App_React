@@ -1,13 +1,23 @@
-import React from 'react'
+import React from 'react';
+import Cookies from 'universal-cookie';
+import { Link } from 'react-router-dom';
 
-const AlbumLoader = (props, findAlbum) => {
+const cookies = new Cookies();
+
+const AlbumLoader = (props, navigate) => {
+
+    const setAlbum = (id) => {
+        cookies.set('albumId', id, {path: "/"});
+        navigate('/album');
+
+    }
+
     return (
       <div>
         {props.albums && props.albums.map((album) => {
           return (
-            <div key={album.id} className='user-album' >
-              <h3 onDoubleClick={()=>findAlbum(album.id)}>{album.title}</h3>
-              <p type='hiden' name={album.id}></p>
+            <div key={album.id} className='user-album' onClick={ ()=>setAlbum(album.id) }>
+             <h3> <Link to={'/album'}>{album.title}</Link></h3>
             </div>
           )
 
