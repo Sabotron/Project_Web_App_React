@@ -4,13 +4,11 @@ import { Link } from 'react-router-dom';
 
 const cookies = new Cookies();
 
-const AlbumLoader = (props, navigate) => {
+const AlbumLoader = (props) => {
 
     const setAlbum = (id, title) => {
         cookies.set('albumId', id, { path: "/" });
         cookies.set('albumTitle', title, { path: "/" })
-        navigate('/album');
-
     }
 
     return (

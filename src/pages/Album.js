@@ -3,11 +3,14 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 import NavBar from '../components/NavBar';
 import PhotoLoader from '../components/PhotoLoader';
+import PhotoModal from '../components/PhotoModal';
 import '../css/Album.css';
 
-const cookies = new Cookies();
+
 const Album = () => {
- const [photos, setPhotos] = useState('');
+  const cookies = new Cookies();
+  const [photos, setPhotos] = useState('');
+  const [photoUrl, setPhotoUrl] = useState('');
   const userId = cookies.get('id');
   const username = cookies.get('username');
   const albumId = cookies.get('albumId');
@@ -24,16 +27,27 @@ const Album = () => {
       })
   }
 
+  function searchPhoto(e) {
+    for (let i = 0; i < photos.length; i++) {
+      if (photos[i].title === e.target.value) {
+        setPhotoUrl(photos[i].url);
+        console.log(photoUrl);
+        break;
+      }
+    }
+  }
+
   useEffect(() => {
     findPhotos();
   }, [])
+
 
   return (
     <div className='Album'>
       <NavBar name={username} id={userId} />
       <h2>Album: {albumTitle}</h2>
-      <input type="text" className='searchBar' placeholder="Buscar Album"/>
-      <br />
+      <input type="text" className='searchBar' placeholder="Buscar Foto" onChange={searchPhoto} onPaste={searchPhoto} />
+      <hr />
       <PhotoLoader photos={photos} />
     </div>
   )

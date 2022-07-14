@@ -41,15 +41,11 @@ const Login = () => {
                 console.log(error);
             })
     }
-
     return (
-
         <div className='Login'>
             <h2>Login</h2>
             <input type="text" className='texfield' placeholder='Name or Email' onChange={getUsername} />
-     
             <input type="text" className='texfield'  placeholder='Password' onChange={getZipcode} />
-      
             <input type="button" className='btn' value={'Ingresar'} onClick={() => { checkUser() }} />
         </div>
 

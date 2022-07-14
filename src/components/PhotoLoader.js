@@ -11,7 +11,7 @@ const PhotoLoader = (props) => {
                         <img className='mini-img' src={photo.thumbnailUrl} alt="img" />
                         <div className='photo-info'>
                             <h3 >{photo.title}</h3>
-                            <p type='hiden' name={photo.url}></p>
+                            <p type='hidden' name={photo.url}></p>
                         </div>
                     </div>
                 )
