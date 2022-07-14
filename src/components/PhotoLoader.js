@@ -1,6 +1,4 @@
 import React from 'react'
-
-
 const PhotoLoader = ({photos,openPhotoModal}) => {
 
     return (
@@ -11,7 +9,6 @@ const PhotoLoader = ({photos,openPhotoModal}) => {
                         <img className='mini-img' src={photo.thumbnailUrl} alt="img" />
                         <div className='photo-info'>
                             <h3 >{photo.title}</h3>
-                            <p type='hidden' name={photo.url}></p>
                         </div>
                     </div>
                 )

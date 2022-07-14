@@ -5,6 +5,7 @@ import NavBar from '../components/NavBar';
 import PhotoLoader from '../components/PhotoLoader';
 import PhotoModal from '../components/PhotoModal';
 import '../css/Album.css';
+import '../css/PhotoModal.css';
 
 const Album = () => {
   const cookies = new Cookies();
@@ -30,8 +31,6 @@ const Album = () => {
   function openPhotoModal(photoUrl){
     setPhotoUrl(photoUrl);
     setOpenModal(true);
-    console.log('it should open');
-    console.log(photoUrl);
   }
 
   function searchPhoto(e) {
@@ -39,7 +38,6 @@ const Album = () => {
       if (photos[i].title === e.target.value) {
         setPhotoUrl(photos[i].url);
         setOpenModal(true);
-        console.log(photoUrl);
         break;
       }
     }
@@ -49,14 +47,13 @@ const Album = () => {
     findPhotos();
   }, [])
 
-
   return (
     <div className='Album'>
       <NavBar name={username} id={userId} />
       <h2>Album: {albumTitle}</h2>
       <input type="text" className='searchBar' placeholder="Buscar Foto" onChange={searchPhoto} onPaste={searchPhoto} />
       <hr />
-      {openModal && <PhotoModal photoUrl={photoUrl}/>}
+      {openModal && <PhotoModal photoUrl={photoUrl} setOpenModal={setOpenModal}/>}
       <PhotoLoader photos={photos} openPhotoModal={openPhotoModal} />
     </div>
   )

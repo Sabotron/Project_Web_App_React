@@ -10,7 +10,6 @@ const Home = () => {
   const navigate = new useNavigate();
   const cookies = new Cookies();
   const [albums, setAlbums] = useState('');
-
   const userId = cookies.get('id');
   const username = cookies.get('username');
   const albumsUrl = 'https://jsonplaceholder.typicode.com/albums?userId=' + userId;
@@ -30,6 +29,7 @@ const Home = () => {
     for (let i = 0; i < albums.length; i++) {
       if (albums[i].title === e.target.value) {
         cookies.set('albumId', albums[i].id, { path: "/" });
+        cookies.set('albumTitle', albums[i].title, { path: "/" });
         navigate('/album');
         break;
       }
